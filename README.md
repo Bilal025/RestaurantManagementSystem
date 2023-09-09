@@ -28,6 +28,7 @@ I am currently in the process of developing a Cafe Management System that will s
 * A role-based system with two user categories: Admin and Customer.
 * Order processing capabilities for both users.
 * Automatic bill generation upon order creation.
+  </br>
 
 ![Desktop - 2](https://github.com/Bilal025/RestaurantManagementSystem/assets/95700674/994e61ea-6415-482a-a0aa-fff1807735fb)
 
