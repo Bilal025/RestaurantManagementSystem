@@ -39,16 +39,16 @@ You can interact with the API's using tools like Postman or by integrating it in
 
 **User API Endpoints and inputs**
 
-* Signup new User: POST /user/signup
+* Signup new User: **POST /user/signup**
 <br />   {"name":"", "contactNumber": "", "email":"", "password":""}
-* Signin User: POST /user/signin
- <br />  {"email": "jay@mail7.io", "password": "1234" }
-* Get all User: GET /user/get
-* Update the status of the User: POST /user/update
+* Signin User: **POST /user/signin**
+ <br />  {"email": "", "password": "" }
+* Get all User: **GET /user/get**
+* Update the status of the User: **POST /user/update**
   <br /> {"id":"", "status":""}
-* Change Password: POST /user/changePassword
+* Change Password: **POST /user/changePassword**
   <br /> {"oldPassword":"", "newPassword":""}
-* Forgot password: POST /user/forgotPassword
+* Forgot password: **POST /user/forgotPassword**
   <br /> {"email":""} 
 
 **Category API Endpoints and inputs**
