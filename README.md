@@ -15,7 +15,7 @@ I am currently in the process of developing a Cafe Management System that will s
 
 **Technologies**
 
-* Backend: Spring Boot, Spring Data JPA, MySQL , JDBC , Spring Security, REST API.
+* Backend: Spring Boot, Spring Data JPA, MySQL , Java Database Connectivity (JDBC) , Spring Security, REST API.
 * Frontend: Angular, Bootstrap styling or Tailwind CSS.
 * Authentication: JWT (JSON Web Tokens) for securing API endpoints.
 
