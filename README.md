@@ -2,8 +2,6 @@
 
 I am currently in the process of developing a Cafe Management System that will simplify the order creation process for cafes and provide customers with a seamless experience. This ongoing project includes user roles for Admins and Customers, efficient category and product management, automated billing, and the ability to download and print bills.
 
-**The source code will upload soon...**
-
 **Admin Features:**
 
 * Category and Product Management: Admins can manage categories, products, and their details to keep the menu up-to-date.
@@ -17,8 +15,8 @@ I am currently in the process of developing a Cafe Management System that will s
 
 **Technologies**
 
-* Backend: Spring Boot, Spring Data JPA, MySQL, Spring Security, REST API.
-* Frontend: Angular, Bootstrap styling.
+* Backend: Spring Boot, Spring Data JPA, MySQL , Java Database Connectivity (JDBC) , Spring Security, REST API.
+* Frontend: Angular, Bootstrap styling or Tailwind CSS.
 * Authentication: JWT (JSON Web Tokens) for securing API endpoints.
 
 **Project Progress**
@@ -28,8 +26,38 @@ I am currently in the process of developing a Cafe Management System that will s
 * A role-based system with two user categories: Admin and Customer.
 * Order processing capabilities for both users.
 * Automatic bill generation upon order creation.
-  </br>
 
+**Installation**
+
+1. Clone the repository to your local machine.
+2. Create a MySQL database for the project and configure the database connection in the 'application.properties' file.
+3. Build the project using Maven.
+4. Build the project using Maven.
+The API should now be running at 'http://localhost:8090.'
+
+You can interact with the API's using tools like Postman or by integrating it into your frontend application.
+
+**User API Endpoints and inputs**
+
+* Signup new User: **POST /user/signup**
+<br />   {"name":"", "contactNumber": "", "email":"", "password":""}
+* Signin User: **POST /user/signin**
+ <br />  {"email": "", "password": "" }
+* Get all User: **GET /user/get**
+* Update the status of the User: **POST /user/update**
+  <br /> {"id":"", "status":""}
+* Change Password: **POST /user/changePassword**
+  <br /> {"oldPassword":"", "newPassword":""}
+* Forgot password: **POST /user/forgotPassword**
+  <br /> {"email":""} 
+
+**Category API Endpoints and inputs**
+
+**Product API Endpoints and inputs**
+
+**Bill API Endpoints and inputs**
+
+<br /><br />
 ![Desktop - 2](https://github.com/Bilal025/RestaurantManagementSystem/assets/95700674/994e61ea-6415-482a-a0aa-fff1807735fb)
 
 
