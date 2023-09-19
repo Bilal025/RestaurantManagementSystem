@@ -51,7 +51,13 @@ You can interact with the API's using tools like Postman or by integrating it in
 * Forgot password: **POST /user/forgotPassword**
   <br /> {"email":""} 
 
-**Category API Endpoints and inputs**
+**Category API Endpoints and inputs** **_(Make sure you are logged in as an admin)_**
+<br /> {"categoryname":""}
+* Add new category: **POST /category/add**
+  <br />  { "categoryname": "" }
+* Get all categories: **GET /category/get**
+* Update the category name: **POST /category/update**
+  <br /> {"id":"", "categoryname":""}
 
 **Product API Endpoints and inputs**
 
