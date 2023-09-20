@@ -15,18 +15,18 @@ public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "pid")
     private Integer id;
 
-    @Column(name = "Productname")
-    private String ProductName;
+    @Column(name = "productname")
+    private String productName;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_fk", nullable = false)
     private Category category;
 
-    @Column(name = "descrption")
-    private String descrption;
+    @Column(name = "description")
+    private String description;
 
     @Column(name = "price")
     private Integer price;

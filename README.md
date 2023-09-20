@@ -15,7 +15,7 @@ I am currently in the process of developing a Cafe Management System that will s
 
 **Technologies**
 
-* Backend: Spring Boot, Spring Data JPA, MySQL , Java Database Connectivity (JDBC) , Spring Security, REST API.
+* Backend: JAVA JDK 11 , Spring Boot, Spring Data JPA, MySQL , Java Database Connectivity (JDBC) , Spring Security, REST API.
 * Frontend: Angular, Bootstrap styling or Tailwind CSS.
 * Authentication: JWT (JSON Web Tokens) for securing API endpoints.
 
@@ -51,15 +51,18 @@ You can interact with the API's using tools like Postman or by integrating it in
 * Forgot password: **POST /user/forgotPassword**
   <br /> {"email":""} 
 
-**Category API Endpoints and inputs** **_(Make sure you are logged in as an admin)_**
-<br /> {"categoryname":""}
+**Category API Endpoints and inputs** **_(Make sure you logged in as an admin)_**
+
 * Add new category: **POST /category/add**
   <br />  { "categoryname": "" }
 * Get all categories: **GET /category/get**
 * Update the category name: **POST /category/update**
   <br /> {"id":"", "categoryname":""}
 
-**Product API Endpoints and inputs**
+**Product API Endpoints and inputs** **_(Make sure you logged in as an admin)_**
+
+* Add new product: **POST /product/add**
+  <br />  {"categoryid":"", "productname":"", "description":"", "price":"" } **_category if a foreign key_**
 
 **Bill API Endpoints and inputs**
 

@@ -5,7 +5,6 @@ import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
-import java.io.Serializable;
 
 //in the name the User is User from Dao. in the query User is the class name of the entity --> User
 @NamedQuery(name = "User.findByEmailId", query = "select u from User u where u.email=:email")
