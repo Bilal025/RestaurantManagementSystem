@@ -63,6 +63,10 @@ You can interact with the API's using tools like Postman or by integrating it in
 
 * Add new product: **POST /product/add**
   <br />  {"categoryid":"", "productname":"", "description":"", "price":"" } **_category if a foreign key_**
+* Get all product: **GET /product/get**
+* Update Product **POST /product/update**
+  <br />  {"categoryid":"", "productname":"", "description":"", "price":"", "pid":""} **_(Make sure you logged in as an admin)_**
+
 
 **Bill API Endpoints and inputs**
 

@@ -6,6 +6,8 @@ import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
 
+@NamedQuery(name = "Product.getAllProduct", query = "select new com.cafe.wrapper.ProductWrapper(p.id,p.productName,p.description,p.price,p.status,p.category.id,p.category.categoryName) from Product p")
+
 @Entity
 @Data
 @DynamicUpdate
@@ -13,25 +15,25 @@ import javax.persistence.*;
 @Table(name = "product")
 public class Product {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "pid")
-    private Integer id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Column(name = "pid")
+  private Integer id;
 
-    @Column(name = "productname")
-    private String productName;
+  @Column(name = "productname")
+  private String productName;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "category_fk", nullable = false)
-    private Category category;
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "category_fk", nullable = false)
+  private Category category;
 
-    @Column(name = "description")
-    private String description;
+  @Column(name = "description")
+  private String description;
 
-    @Column(name = "price")
-    private Integer price;
+  @Column(name = "price")
+  private Integer price;
 
-    @Column(name = "status")
-    private String status;
+  @Column(name = "status")
+  private String status;
 
 }
