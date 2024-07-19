@@ -66,6 +66,11 @@ You can interact with the API's using tools like Postman or by integrating it in
 * Get all product: **GET /product/get**
 * Update Product **POST /product/update**
   <br />  {"categoryid":"", "productname":"", "description":"", "price":"", "pid":""} **_(Make sure you logged in as an admin)_**
+* Delete Product **DELETE /product/delete/{pid}**
+* Update product status **POST /product/updateStatus**
+  <br />  {"status":"", "pid":""}
+* Get product by category **GET /product/getByCategory/{cid}**
+* Get product by id **GET /product/getById/{pid}**
 
 
 **Bill API Endpoints and inputs**

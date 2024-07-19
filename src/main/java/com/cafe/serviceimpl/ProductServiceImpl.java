@@ -2,9 +2,11 @@ package com.cafe.serviceimpl;
 
 import com.cafe.JWT.JwtFilter;
 import com.cafe.constent.CafeConstant;
+import com.cafe.dao.CategoryDao;
 import com.cafe.dao.ProductDao;
 import com.cafe.model.Category;
 import com.cafe.model.Product;
+import com.cafe.restimpl.CategoryRestImpl;
 import com.cafe.service.ProductService;
 import com.cafe.utils.CafeUtils;
 import com.cafe.wrapper.ProductWrapper;
@@ -26,6 +28,10 @@ public class ProductServiceImpl implements ProductService {
 
   @Autowired
   JwtFilter jwtFilter;
+  @Autowired
+  private CategoryDao categoryDao;
+  @Autowired
+  private CategoryRestImpl categoryRestImpl;
 
   //? Add product --------------------------------------------------------
   @Override
@@ -71,7 +77,7 @@ public class ProductServiceImpl implements ProductService {
       if (jwtFilter.isAdmin()) {
         if (validateProductMap(requestMap, true)) {
           Optional<Product> optional = productDao.findById(Integer.parseInt(requestMap.get("pid")));
-          if (!optional.isEmpty()) {
+          if (optional.isPresent()) {
             Product product = getProductFromMap(requestMap, true);
             product.setStatus(optional.get().getStatus());
             productDao.save(product);
@@ -94,6 +100,86 @@ public class ProductServiceImpl implements ProductService {
 
     return CafeUtils.getResponseEntity(CafeConstant.SOMETHING_WENT_WRONG,
         HttpStatus.INTERNAL_SERVER_ERROR);
+  }
+
+  //? Delete product --------------------------------------------------------
+  @Override
+  public ResponseEntity<String> deleteProduct(Integer id) {
+    try {
+      if (jwtFilter.isAdmin()) {
+        Optional<Product> optional = productDao.findById(id);
+        if (optional.isPresent()) {
+          productDao.deleteById(id);
+          return CafeUtils.getResponseEntity("Product deleted successfully", HttpStatus.OK);
+        }
+        return CafeUtils.getResponseEntity("Product id does not exist", HttpStatus.OK);
+
+      } else {
+        return CafeUtils.getResponseEntity(CafeConstant.UNAUTHORIZED_ACCESS,
+            HttpStatus.UNAUTHORIZED);
+      }
+
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+    return CafeUtils.getResponseEntity(CafeConstant.SOMETHING_WENT_WRONG,
+        HttpStatus.INTERNAL_SERVER_ERROR);
+  }
+
+  //? update product status product --------------------------------------------------------
+  @Override
+  public ResponseEntity<String> updateProductStatus(Map<String, String> requestMap) {
+    try {
+      if (jwtFilter.isAdmin()) {
+        Optional<Product> optional = productDao.findById(Integer.parseInt(requestMap.get("pid")));
+        if (optional.isPresent()) {
+          productDao.updateProductStatus(requestMap.get("status"),
+              Integer.parseInt(requestMap.get("pid")));
+
+          return CafeUtils.getResponseEntity("Product status updated successfully", HttpStatus.OK);
+
+        } else {
+          return CafeUtils.getResponseEntity("Product id does not exist", HttpStatus.OK);
+        }
+
+      } else {
+        return CafeUtils.getResponseEntity(CafeConstant.UNAUTHORIZED_ACCESS,
+            HttpStatus.UNAUTHORIZED);
+      }
+
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+
+    return CafeUtils.getResponseEntity(CafeConstant.SOMETHING_WENT_WRONG,
+        HttpStatus.INTERNAL_SERVER_ERROR);
+  }
+
+  //? get Product By Category  --------------------------------------------------------
+  @Override
+  public ResponseEntity<List<ProductWrapper>> getProductByCategory(Integer id) {
+    try{
+        return new ResponseEntity<>(productDao.getProductByCategory(id), HttpStatus.OK);
+
+    }catch (Exception e){
+      e.printStackTrace();
+    }
+
+    return new ResponseEntity<>(new ArrayList<>(), HttpStatus.INTERNAL_SERVER_ERROR);
+  }
+
+  //? get Product By id  --------------------------------------------------------
+  @Override
+  public ResponseEntity<ProductWrapper> getProductById(Integer id) {
+    try{
+      return new ResponseEntity<>(productDao.getProductById(id), HttpStatus.OK);
+
+    }catch (Exception e){
+      e.printStackTrace();
+    }
+
+
+    return new ResponseEntity<>(new ProductWrapper(), HttpStatus.INTERNAL_SERVER_ERROR);
   }
 
 
